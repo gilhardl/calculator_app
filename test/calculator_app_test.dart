@@ -39,11 +39,15 @@ void main() {
 
     // Golden files could be generated using the following command
     // $ flutter test --update-goldens
-    testWidgets('matches golden file', (WidgetTester tester) async {
-      await tester.pumpWidget(CalculatorApp());
-      await tester.pump(const Duration(seconds: 1));
-      await expectLater(find.byType(CalculatorApp), matchesGoldenFile('goldens/calculator_app.png'));
-    });
+    testWidgets(
+      'matches golden file',
+      (WidgetTester tester) async {
+        await tester.pumpWidget(CalculatorApp());
+        await tester.pump(const Duration(seconds: 1));
+        await expectLater(find.byType(CalculatorApp), matchesGoldenFile('goldens/calculator_app.png'));
+      },
+      tags: 'no-ci',
+    );
   });
 
   group('HomeScreen', () {
